@@ -1,101 +1,390 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>SparknovaX LLC - Official Company Website</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="SparknovaX - AI-Powered Future Technology, providing end-to-end intelligent solutions for enterprises">
+    <meta name="keywords"
+        content="artificial intelligence,AI solutions,intelligent data analysis,automation,enterprise AI">
+    <title>SparknovaX - AI-Powered Future Technology</title>
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Roboto:wght@300;400;500&display=swap"
+        rel="stylesheet">
+
     <style>
+        :root {
+            --primary-color: #165DFF;
+            --secondary-color: #0E2E8A;
+            --bg-light: #F5F7FA;
+            --text-dark: #1D2129;
+        }
+
         body {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
-            Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
-            margin: 0;
-            padding: 0;
-            background: #f9fafb;
-            color: #333;
+            font-family: 'Roboto', sans-serif;
             line-height: 1.6;
         }
-        header {
-            background: #0052cc;
-            color: white;
-            padding: 1rem 2rem;
-            text-align: center;
+
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6 {
+            font-family: 'Inter', sans-serif;
+            font-weight: 700;
         }
-        header h1 {
-            margin: 0;
-            font-size: 1.8rem;
+
+        .hero-bg {
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
         }
-        main {
-            max-width: 900px;
-            margin: 2rem auto;
-            padding: 0 1rem;
+
+        .fade-in {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.6s ease;
         }
-        section {
-            margin-bottom: 2rem;
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
         }
-        h2 {
-            color: #0052cc;
-            margin-bottom: 0.5rem;
+
+        .navbar-scroll {
+            backdrop-filter: blur(10px);
+            background-color: rgba(255, 255, 255, 0.95);
         }
-        p {
-            margin-top: 0;
+
+        .navbar-scroll .nav-link {
+            color: #374151 !important;
         }
-        footer {
-            background: #f0f0f0;
-            color: #666;
-            text-align: center;
-            padding: 1rem;
-            font-size: 0.9rem;
-            border-top: 1px solid #ddd;
+
+        .navbar-scroll .nav-link:hover {
+            color: #165DFF !important;
         }
-        a {
-            color: #0052cc;
-            text-decoration: none;
+
+        .navbar-scroll .logo-text {
+            color: #1F2937 !important;
         }
-        a:hover {
-            text-decoration: underline;
+
+        .navbar-scroll .mobile-menu-btn {
+            color: #374151 !important;
         }
-        address {
-            font-style: normal;
-            line-height: 1.4;
+
+        .navbar-scroll #mobile-menu {
+            background-color: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 8px;
+            margin-top: 8px;
+            padding: 8px;
+        }
+
+        .btn-hover:hover {
+            transform: scale(1.05);
+            transition: transform 0.2s ease;
+        }
+
+        .card-hover:hover {
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            transform: translateY(-5px);
+            transition: all 0.3s ease;
         }
     </style>
 </head>
-<body>
-<header>
-    <h1>SparknovaX LLC</h1>
-    <p>Professional Application Development Company</p>
-</header>
 
-<main>
-    <section id="about">
-        <h2>About Us</h2>
-        <p>
-            SparknovaX LLC is a Wyoming-registered limited liability company specializing in
-            developing innovative mobile and web applications. We are dedicated to delivering
-            high-quality software solutions that meet our clients’ needs.
-        </p>
+<body class="bg-gray-50">
+    <!-- 导航栏 -->
+    <nav id="navbar" class="fixed top-0 w-full z-50 transition-all duration-300">
+        <div class="container mx-auto px-6 py-4">
+            <div class="flex justify-between items-center">
+                <div class="flex items-center">
+                    <i class="fas fa-bolt text-2xl text-blue-400 mr-2"></i>
+                    <span class="logo-text text-2xl font-bold text-white">SparknovaX</span>
+                </div>
+
+                <div class="hidden md:flex space-x-8">
+                    <a href="#home" class="nav-link text-white hover:text-blue-200 transition-colors">Home</a>
+                    <a href="#products" class="nav-link text-white hover:text-blue-200 transition-colors">Products</a>
+                    <a href="#about" class="nav-link text-white hover:text-blue-200 transition-colors">About</a>
+                </div>
+
+                <div class="md:hidden">
+                    <button id="mobile-menu-btn" class="mobile-menu-btn text-white"></button>
+                    <i class="fas fa-bars text-xl"></i>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Mobile Menu -->
+            <div id="mobile-menu" class="hidden md:hidden mt-4 pb-4">
+                <a href="#home" class="nav-link block py-2 text-white hover:text-blue-200">Home</a>
+                <a href="#products" class="nav-link block py-2 text-white hover:text-blue-200">Products</a>
+                <a href="#about" class="nav-link block py-2 text-white hover:text-blue-200">About</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero区域 -->
+    <section id="home" class="hero-bg h-[67vh] flex items-center">
+        <div class="container mx-auto px-6 text-center text-white">
+            <div class="fade-in">
+                <h1 class="text-5xl md:text-6xl font-bold mb-6">From idea to launch, craft industry-defining apps</h1>
+                <p class="text-xl md:text-2xl mb-8 opacity-90">Custom development | Cross-platform | Data-driven
+                    optimization | Lifetime support</p>
+                <div class="space-x-4">
+                    <a href="#products"
+                        class="btn-hover bg-white text-blue-600 px-8 py-3 rounded-lg font-semibold inline-block">Explore
+                        Products</a>
+                    <a href="#about"
+                        class="btn-hover border-2 border-white text-white px-8 py-3 rounded-lg font-semibold inline-block">Learn
+                        More</a>
+                </div>
+            </div>
+        </div>
     </section>
 
-    <section id="contact">
-        <h2>Contact Information</h2>
-        <address>
-            Headquarters: 1021 E Lincolnway Suite 8779 Cheyenne, WY 82001, USA<br />
-            Phone: +1 (307) 412-3179<br />
-            Email: <a href="mailto:support@sparknovax.com">support@sparknovax.com</a>
-        </address>
+    <!-- Core Advantages -->
+    <section class="py-32 bg-white">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-20 fade-in">
+                <h2 class="text-4xl font-bold text-gray-800 mb-4">Core Advantages</h2>
+                <p class="text-xl text-gray-600">Leading AI technology to empower your enterprise</p>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-12">
+                <div class="text-center fade-in card-hover p-10 rounded-lg">
+                    <div class="w-20 h-20 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-8">
+                        <i class="fas fa-brain text-3xl text-blue-600"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold text-gray-800 mb-6">Advanced Algorithms</h3>
+                    <p class="text-gray-600">Utilizing cutting-edge deep learning algorithms to ensure AI model accuracy
+                        and efficiency, providing reliable intelligent decision support for enterprises.</p>
+                </div>
+
+                <div class="text-center fade-in card-hover p-10 rounded-lg">
+                    <div class="w-20 h-20 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-8">
+                        <i class="fas fa-cogs text-3xl text-blue-600"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold text-gray-800 mb-6">Customized Solutions</h3>
+                    <p class="text-gray-600">Tailored AI solutions based on different industry and enterprise needs,
+                        ensuring optimal business compatibility and effectiveness.</p>
+                </div>
+
+                <div class="text-center fade-in card-hover p-10 rounded-lg">
+                    <div class="w-20 h-20 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-8">
+                        <i class="fas fa-headset text-3xl text-blue-600"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold text-gray-800 mb-6">Full-Cycle Support</h3>
+                    <p class="text-gray-600">From requirement analysis to deployment and maintenance, providing
+                        comprehensive professional technical support throughout the entire lifecycle.</p>
+                </div>
+            </div>
+        </div>
     </section>
 
-    <section id="legal">
-        <h2>Legal & Compliance</h2>
-        <p>
-            Registered in Wyoming, USA.<br />
-            Please contact us for privacy policies and terms of service.
-        </p>
-    </section>
-</main>
+    <!-- Products Section -->
+    <section id="products" class="py-20 bg-gray-50">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16 fade-in">
+                <h2 class="text-4xl font-bold text-gray-800 mb-4">Our Products</h2>
+                <p class="text-xl text-gray-600">Intelligent product matrix to accelerate digital transformation</p>
+            </div>
 
-<footer>
-    &copy; 2025 SparknovaX LLC. All rights reserved.
-</footer>
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <div class="bg-white rounded-lg shadow-lg overflow-hidden card-hover fade-in">
+                    <div class="h-48 bg-gradient-to-br from-blue-400 to-blue-600 flex items-center justify-center">
+                        <i class="fas fa-chart-line text-4xl text-white"></i>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-gray-800 mb-2">Intelligent Data Analytics</h3>
+                        <p class="text-gray-600 mb-4">Machine learning-based data analysis platform for rapid business
+                            insights</p>
+                        <div class="text-blue-600 hover:text-blue-800 font-semibold">Learn More →</div>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-lg shadow-lg overflow-hidden card-hover fade-in">
+                    <div class="h-48 bg-gradient-to-br from-green-400 to-green-600 flex items-center justify-center">
+                        <i class="fas fa-robot text-4xl text-white"></i>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-gray-800 mb-2">Process Automation</h3>
+                        <p class="text-gray-600 mb-4">Intelligent process automation solutions to enhance operational
+                            efficiency</p>
+                        <div class="text-blue-600 hover:text-blue-800 font-semibold">Learn More →</div>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-lg shadow-lg overflow-hidden card-hover fade-in">
+                    <div class="h-48 bg-gradient-to-br from-purple-400 to-purple-600 flex items-center justify-center">
+                        <i class="fas fa-lightbulb text-4xl text-white"></i>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-gray-800 mb-2">AI Decision System</h3>
+                        <p class="text-gray-600 mb-4">Intelligent decision support system to optimize enterprise
+                            decision-making</p>
+                        <div class="text-blue-600 hover:text-blue-800 font-semibold">Learn More →</div>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-lg shadow-lg overflow-hidden card-hover fade-in">
+                    <div class="h-48 bg-gradient-to-br from-orange-400 to-orange-600 flex items-center justify-center">
+                        <i class="fas fa-shield-alt text-4xl text-white"></i>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-gray-800 mb-2">Intelligent Security</h3>
+                        <p class="text-gray-600 mb-4">AI-driven cybersecurity protection to safeguard enterprise data
+                        </p>
+                        <div class="text-blue-600 hover:text-blue-800 font-semibold">Learn More →</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+    <!-- About Section -->
+    <section id="about" class="py-20 bg-gray-50">
+        <div class="container mx-auto px-6">
+            <div class="grid md:grid-cols-2 gap-12 items-center">
+                <div class="fade-in">
+                    <h2 class="text-4xl font-bold text-gray-800 mb-6">About SparknovaX</h2>
+                    <p class="text-lg text-gray-600 mb-6">
+                        SparknovaX is a leading AI technology company dedicated to providing cutting-edge artificial
+                        intelligence solutions for enterprises worldwide. We specialize in transforming businesses
+                        through intelligent automation, data analytics, and decision support systems.
+                    </p>
+                    <p class="text-lg text-gray-600 mb-8">
+                        Our team of experts combines deep technical knowledge with industry experience to deliver
+                        solutions that drive real business value and competitive advantage.
+                    </p>
+                    <div class="grid grid-cols-2 gap-6">
+                        <div class="text-center">
+                            <div class="text-3xl font-bold text-blue-600 mb-2">500+</div>
+                            <div class="text-gray-600">Enterprise Clients</div>
+                        </div>
+                        <div class="text-center">
+                            <div class="text-3xl font-bold text-blue-600 mb-2">98%</div>
+                            <div class="text-gray-600">Client Satisfaction</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="fade-in">
+                    <div
+                        class="bg-gradient-to-br from-blue-400 to-blue-600 rounded-lg h-96 flex items-center justify-center">
+                        <i class="fas fa-rocket text-6xl text-white"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-12">
+        <div class="container mx-auto px-6">
+            <div class="grid md:grid-cols-3 gap-8">
+                <div>
+                    <div class="flex items-center mb-4">
+                        <i class="fas fa-bolt text-2xl text-blue-400 mr-2"></i>
+                        <span class="text-2xl font-bold">SparknovaX</span>
+                    </div>
+                    <p class="text-gray-400 mb-4">AI-powered future technology, providing end-to-end intelligent
+                        solutions for enterprises</p>
+<!--                    <div class="flex space-x-4">-->
+<!--                        <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-linkedin text-xl"></i></a>-->
+<!--                        <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-twitter text-xl"></i></a>-->
+<!--                        <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-github text-xl"></i></a>-->
+<!--                    </div>-->
+                </div>
+
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Products & Services</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#products" class="text-gray-400 hover:text-white">Intelligent Data Analytics</a>
+                        </li>
+                        <li><a href="#products" class="text-gray-400 hover:text-white">Process Automation</a></li>
+                        <li><a href="#products" class="text-gray-400 hover:text-white">AI Decision System</a></li>
+                        <li><a href="#products" class="text-gray-400 hover:text-white">Intelligent Security</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Contact Info</h4>
+                    <div class="space-y-2 text-gray-400">
+                        <p><i class="fas fa-map-marker-alt mr-2"></i>1021 E Lincolnway Suite 8779 Cheyenne, WY 82001</p>
+                        <p><i class="fas fa-phone mr-2"></i>+1 307 412 3179</p>
+                        <p><i class="fas fa-envelope mr-2"></i>support@sparknovax.com</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="border-t border-gray-700 mt-8 pt-8 text-center text-gray-400">
+                <p>&copy; 2025 SparknovaX LLC. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script>
+        // 导航栏滚动效果
+        window.addEventListener('scroll', function () {
+            const navbar = document.getElementById('navbar');
+            if (window.scrollY > 50) {
+                navbar.classList.add('navbar-scroll');
+            } else {
+                navbar.classList.remove('navbar-scroll');
+            }
+        });
+
+        // 移动端菜单切换
+        document.getElementById('mobile-menu-btn').addEventListener('click', function () {
+            const mobileMenu = document.getElementById('mobile-menu');
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // 淡入动画
+        function fadeInOnScroll() {
+            const elements = document.querySelectorAll('.fade-in');
+            elements.forEach(element => {
+                const elementTop = element.getBoundingClientRect().top;
+                const elementVisible = 150;
+
+                if (elementTop < window.innerHeight - elementVisible) {
+                    element.classList.add('visible');
+                }
+            });
+        }
+
+        window.addEventListener('scroll', fadeInOnScroll);
+        fadeInOnScroll(); // 初始检查
+
+        // 平滑滚动
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Google Analytics 预留位置
+        // gtag('config', 'GA_MEASUREMENT_ID');
+    </script>
 </body>
+
 </html>
